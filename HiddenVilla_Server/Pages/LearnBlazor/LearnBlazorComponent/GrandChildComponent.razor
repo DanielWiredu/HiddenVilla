@@ -1,0 +1,14 @@
+﻿<div class="row">
+    <h4 class="text-primary p-lg-4 pt-2">GrandChildComponent</h4>
+    <br />
+    <p>There is a message - @MessasgeForGrandChild</p>
+</div>
+
+
+@code {
+    // [Parameter]
+    // public string MessasgeForGrandChild { get; set; }
+
+    [CascadingParameter(Name = "cpMessage")]
+    public string MessasgeForGrandChild { get; set; }
+}

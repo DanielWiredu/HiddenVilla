@@ -1,0 +1,32 @@
+﻿<div>
+    <div class="alert alert-info"> @Title  </div>
+    <div class="alert alert-success">
+        @if (ChildContent == null)
+         {   
+             <span>Default Render Fragment from child</span>
+         }
+        else
+          {  
+              <span>@ChildContent</span>
+          }
+          <hr />
+          @DangerChildContent
+    </div>
+    <button class="btn btn-danger" @onclick="OnClickBtnMethod">Button to be clicked</button>
+
+    @* <GrandChildComponent MessasgeForGrandChild="@MessasgeForGrandChild"></GrandChildComponent> *@
+    <GrandChildComponent ></GrandChildComponent>
+</div>
+
+@code {
+    [Parameter]
+    public string Title { get; set; }
+    [Parameter]
+    public RenderFragment ChildContent { get; set; }
+    [Parameter]
+    public RenderFragment DangerChildContent { get; set; }
+    [Parameter]
+    public EventCallback<MouseEventArgs> OnClickBtnMethod { get; set; }
+    // [Parameter]
+    // public string MessasgeForGrandChild { get; set; } = "This is a message from your Parent";
+}

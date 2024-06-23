@@ -1,0 +1,31 @@
+﻿@page "/learnadvancerouting"
+@inject NavigationManager NavigationManager
+
+<h3>Learn Advance Routing</h3>
+
+<h4>Parameter 1 : @param1</h4>
+<h3>Parameter 2 : @param2</h3>
+
+<p>
+    <button class="btn btn-primary" @onclick="LoadParameters">Load Parameters</button>
+    @* <NavLink href="/learnrouting" class="btn btn-secondary">Back to Routing</NavLink> *@
+    @* <a href="/learnrouting" class="btn btn-secondary">Back to Routing</a> *@
+    <button class="btn btn-info" @onclick="BackRouting">Back to Routing</button>
+</p>
+
+@code {
+    private string param1;
+    private string param2;
+
+    private void LoadParameters()
+    {
+        var absoluteUri = new Uri(NavigationManager.Uri);
+        var queryParam = System.Web.HttpUtility.ParseQueryString(absoluteUri.Query);
+        param1 = queryParam["Param1"];
+        param2 = queryParam["Param2"];
+    }
+    private void BackRouting()
+    {
+        NavigationManager.NavigateTo("learnrouting");
+    }
+}
