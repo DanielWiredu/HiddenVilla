@@ -23,5 +23,6 @@ namespace DataAccess.Data
         public DateTime CreatedDate { get; set; } = DateTime.UtcNow;
         public string UpdatedBy { get; set; } = "UserID";
         public DateTime UpdatedDate { get; set; } = DateTime.UtcNow;
+        public virtual ICollection<HotelRoomImage> HotelRoomImages { get; set; }
     }
 }

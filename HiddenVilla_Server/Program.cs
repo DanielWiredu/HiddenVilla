@@ -2,6 +2,8 @@ using Business.Repository;
 using Business.Repository.IRepository;
 using DataAccess.Data;
 using HiddenVilla_Server.Data;
+using HiddenVilla_Server.Service;
+using HiddenVilla_Server.Service.IService;
 using Microsoft.AspNetCore.Components;
 using Microsoft.AspNetCore.Components.Web;
 using Microsoft.EntityFrameworkCore;
@@ -17,6 +19,10 @@ builder.Services.AddSingleton<WeatherForecastService>();
 builder.Services.AddDbContext<ApplicationDbContext>(options => options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection")));
 builder.Services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());
 builder.Services.AddScoped<IHotelRoomRepository, HotelRoomRepository>();
+builder.Services.AddScoped<IHotelImagesRepository, HotelImagesRepository>();
+builder.Services.AddScoped<IFileUpload, FileUpload>();
+builder.Services.AddHttpContextAccessor();
+// end my services
 
 var app = builder.Build();
 
