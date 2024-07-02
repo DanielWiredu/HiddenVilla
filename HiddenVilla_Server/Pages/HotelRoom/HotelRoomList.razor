@@ -6,6 +6,7 @@
 @inject IJSRuntime JsRuntime
 @inject HiddenVilla_Server.Service.IService.IFileUpload FileUpload
 @inject NavigationManager NavigationManager
+@attribute [Authorize (Roles = Common.SD.Role_Admin)]
 
 <div class="row mt-4">
     <div class="col-8">
@@ -40,8 +41,8 @@
                             <td>@room.RegularRate.ToString("c")</td>
                             <td>@room.SqFt</td>
                             <td>
-                                <NavLink href="@($"hotel-room/edit/{room.Id}")" class="btn btn-primary">Edit</NavLink>
-                                <button class="btn btn-danger" @onclick="()=>HandleDelete(room.Id)">Delete</button>
+                                <NavLink href="@($"hotel-room/edit/{room.Id}")" class="btn btn-primary"><i class="fa fa-pencil"></i> Edit</NavLink>
+                                <button class="btn btn-danger" @onclick="()=>HandleDelete(room.Id)"><i class="fa fa-trash"></i> Delete</button>
                             </td>
                         </tr>
                     }
